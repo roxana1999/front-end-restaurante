@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { listaDatos } from '../models/ListaDatos';
-import { Mesa } from '../models/Mesa';
+import { DatosMesa, Mesa } from '../models/Mesa';
 
 
 @Injectable({
@@ -12,9 +12,8 @@ export class MesaService {
   private api: string ="http://localhost:5000/mesas/mesaById";
   constructor(private http: HttpClient) { }
 
-  getMesas(queryParams: {}={}): Observable<listaDatos<Mesa>> {
-    console.log("queryparams", queryParams);
-    return this.http.get<listaDatos<Mesa>>(this.api, {params: queryParams});
+  getMesaById(queryParams: {}={}): Observable<DatosMesa> {
+    return this.http.get<DatosMesa>(this.api, {params: queryParams});
   }
   
 }

@@ -14,6 +14,10 @@ export class ReservaService {
   private api: string ="http://localhost:5000/reservas/";
   constructor(private http: HttpClient) { }
 
+  getReservas(queryParams: {} = {}): Observable<listaDatos<Reserva>> {
+    return this.http.get<listaDatos<Reserva>>(this.api, {params: queryParams});
+  }
+  
   getMesasDisponibles(queryParams: {} = {}): Observable<listaDatos<Mesa>> {
     return this.http.get<listaDatos<Mesa>>(this.api+"listarMesasDisponibles", {params: queryParams});
   }
