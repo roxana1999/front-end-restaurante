@@ -1,3 +1,7 @@
+import { Cliente } from "./Cliente"
+import { Mesa } from "./Mesa"
+import { Restaurante } from "./Restaurante"
+
 export class Reserva {
     id?: number
     idMesa: number
@@ -6,6 +10,9 @@ export class Reserva {
     horaFinReserva: string
     idCliente: string
     cantidadMesa: string
+    cliente?: Cliente
+    mesa?: Mesa
+    restaurante?: Restaurante
 
     constructor(
         idMesa: number,
