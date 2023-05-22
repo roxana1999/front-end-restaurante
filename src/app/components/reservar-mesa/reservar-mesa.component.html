@@ -40,8 +40,8 @@
 		<mat-form-field class="example-full-width">
 			<mat-label>Seleccione la mesa:</mat-label>
 			<mat-select [(ngModel)]="idMesa" (selectionChange)="checkFormCompletion()" [disabled]="!puedoSeleccionarMesa">
-				<mat-option *ngFor="let mesa of listaMesasDisponibles" [value]="mesa.id_mesa">
-					{{ mesa.nombre_mesa }}, capacidad: {{mesa.capacidad_x_mesa}} personas
+				<mat-option *ngFor="let mesa of listaMesasDisponibles" [value]="mesa.idMesa">
+					{{ mesa.nombreMesa }}, capacidad: {{mesa.capacidadPorMesa}} personas
 				</mat-option>
 			</mat-select>
 		</mat-form-field>
