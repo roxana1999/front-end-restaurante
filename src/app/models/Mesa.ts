@@ -1,21 +1,29 @@
 import { Restaurante } from "./Restaurante"
 
 export class Mesa {
-    id: number
-    nombre: string
-    restaurante: Restaurante
-    posX: number
-    posY: number
-    capacidad: number
+    id_mesa: number
+    nombre_mesa: string
+    id_restaurante: string
+    posicion_x: number
+    posicion_y: number
+    capacidad_x_mesa: number
     estado: string
 
-    constructor(id: number, nombre: string, restaurante: Restaurante, posX: number, posY: number, capacidad: number, estado: string) {
-        this.id = id
-        this.nombre = nombre
-        this.restaurante = restaurante
-        this.posX = posX
-        this.posY = posY
-        this.capacidad = capacidad
+    constructor(
+        id_mesa: number,
+        nombre_mesa: string,
+        id_restaurante: string,
+        posicion_x: number,
+        posicion_y: number,
+        capacidad_x_mesa: number,
+        estado: string
+    ) {
+        this.id_mesa = id_mesa
+        this.nombre_mesa = nombre_mesa
+        this.id_restaurante = id_restaurante
+        this.posicion_x = posicion_x
+        this.posicion_y = posicion_y
+        this.capacidad_x_mesa = capacidad_x_mesa
         this.estado = estado
     }
 }

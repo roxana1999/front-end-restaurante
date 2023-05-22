@@ -1,13 +1,22 @@
 export class Cliente {
-    id: number
-    cedula: number
-    nombre: string
-    apellido: string
+    idCliente?: string
+    nroDocumento: string
+    nombres: string
+    apellidos: string
 
-    constructor(id: number, cedula: number, nombre: string, apellido: string) {
-        this.id = id
-        this.cedula = cedula
-        this.nombre = nombre
-        this.apellido = apellido
+    constructor(
+        nroDocumento: string,
+        nombres: string,
+        apellidos: string
+    ) {
+        this.nroDocumento = nroDocumento
+        this.nombres = nombres
+        this.apellidos = apellidos
     }
+}
+
+export class datosCliente {
+    estado?: string
+    mensaje?: string
+    datos?: Cliente
 }

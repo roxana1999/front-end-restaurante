@@ -1,26 +1,31 @@
-import { Time } from '@angular/common'
-import { Mesa } from './Mesa'
-import { Restaurante } from './Restaurante'
-import { Cliente } from './Cliente'
-
 export class Reserva {
-    id: number
-    restaurante: Restaurante
-    mesa: Mesa
-    fecha: Date
-    horaInicio: Time
-    horaFin: Time
-    cliente: Cliente
-    cantidadSolicitada: number
+    id?: number
+    idMesa: number
+    fechaReserva: string
+    horaInicioReserva: string
+    horaFinReserva: string
+    idCliente: string
+    cantidadMesa: string
 
-    constructor(id: number, restaurante: Restaurante, mesa: Mesa, fecha: Date, horaInicio: Time, horaFin: Time, cliente: Cliente, cantidadSolicitada: number) {
-        this.id = id
-        this.restaurante = restaurante
-        this.mesa = mesa
-        this.fecha = fecha
-        this.horaInicio = horaInicio
-        this.horaFin = horaFin
-        this.cliente = cliente
-        this.cantidadSolicitada = cantidadSolicitada
+    constructor(
+        idMesa: number,
+        fechaReserva: string,
+        horaInicioReserva: string,
+        horaFinReserva: string,
+        idCliente: string,
+        cantidadMesa: string
+    ) {
+        this.idMesa = idMesa
+        this.fechaReserva = fechaReserva
+        this.horaInicioReserva = horaInicioReserva
+        this.horaFinReserva = horaFinReserva
+        this.idCliente = idCliente
+        this.cantidadMesa = cantidadMesa
     }
+}
+
+export class DatosReserva {
+    estado?: string
+    mensaje?: string
+    datos?: Reserva
 }

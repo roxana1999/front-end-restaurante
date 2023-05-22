@@ -1,9 +1,9 @@
 export class Restaurante {
-    idRestaurante: number;
+    idRestaurante: string;
     nombre: string;
     direccion: string;
     
-    constructor(idRestaurante: number, nombre: string, direccion: string) {
+    constructor(idRestaurante: string, nombre: string, direccion: string) {
         this.idRestaurante = idRestaurante;
         this.nombre = nombre;
         this.direccion = direccion;
