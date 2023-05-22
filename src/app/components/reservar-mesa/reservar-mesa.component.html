@@ -1,0 +1,53 @@
+<ng-template #elseBlock>
+	<div style="width: 400px; max-width: 100%; margin: auto;">
+		<mat-form-field class="example-full-width">
+			<mat-label>Ingrese su número de cédula</mat-label>
+			<input matInput [(ngModel)]="nroCedula" (change)="getCliente()">
+		</mat-form-field>
+		<mat-form-field class="example-full-width">
+			<mat-label>Ingrese su nombre</mat-label>
+			<input matInput [(ngModel)]="nombres" [disabled]="clienteEncontrado" (change)="checkFormCompletion()">
+		</mat-form-field>
+		<mat-form-field class="example-full-width">
+			<mat-label>Ingrese su apellido</mat-label>
+			<input matInput [(ngModel)]="apellidos" [disabled]="clienteEncontrado" (change)="checkFormCompletion()">
+		</mat-form-field>
+		
+		<mat-form-field class="example-full-width">
+			<mat-label>Seleccione el restaurante:</mat-label>
+			<mat-select [(ngModel)]="idRestaurante" (selectionChange)="checkFormCompletion()">
+				<mat-option *ngFor="let restaurante of listaRestaurantes" [value]="restaurante.idRestaurante">
+					{{ restaurante.nombre }}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		
+		<mat-form-field class="example-full-width">
+			<mat-label>Seleccione la fecha de reserva:</mat-label>
+			<input matInput [matDatepicker]="picker" [(ngModel)]="selectedFecha" (dateChange)="checkFormCompletion()">
+			<mat-hint>MM/DD/YYYY</mat-hint>
+			<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+		</mat-form-field>
+		
+		<mat-form-field class="example-full-width">
+			<mat-label>Seleccione la/s hora/s que desea reservar:</mat-label>
+			<mat-select [(ngModel)]="selectedHoras" multiple (selectionChange)="onSelectionChange()">
+				<mat-option *ngFor="let rangoHora of listaRangoHoras" [value]="rangoHora">{{rangoHora.desde}} h a {{rangoHora.hasta}} h</mat-option>
+			</mat-select>
+		</mat-form-field>
+	
+		<mat-form-field class="example-full-width">
+			<mat-label>Seleccione la mesa:</mat-label>
+			<mat-select [(ngModel)]="idMesa" (selectionChange)="checkFormCompletion()" [disabled]="!puedoSeleccionarMesa">
+				<mat-option *ngFor="let mesa of listaMesasDisponibles" [value]="mesa.id_mesa">
+					{{ mesa.nombre_mesa }}, capacidad: {{mesa.capacidad_x_mesa}} personas
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<button mat-button color="primary" (click)="validarDatos()" [disabled]="!isFormComplete">Hacer Reserva</button>
+	</div>
+</ng-template>
+<div *ngIf="reservaCreada; else elseBlock" style="width: 400px; max-width: 100%; margin: auto;">
+	<h1>Reserva exitosa</h1>
+</div>
