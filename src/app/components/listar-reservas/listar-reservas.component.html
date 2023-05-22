@@ -1,33 +1,54 @@
-<div *ngIf="listaReservas.length > 0" style="max-width: fit-content; width: 100%; margin: auto;">
-    <mat-table [dataSource]="listaReservas">
-        <ng-container matColumnDef="idMesa">
-        <th mat-header-cell *matHeaderCellDef>Mesa</th>
-        <td mat-cell *matCellDef="let r">{{r.mesa?.nombreMesa}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="idRestaurante">
-        <th mat-header-cell *matHeaderCellDef>Restaurante</th>
-        <td mat-cell *matCellDef="let r">{{r.restaurante?.nombre}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="fechaReserva">
-        <th mat-header-cell *matHeaderCellDef>Fecha de reserva</th>
-        <td mat-cell *matCellDef="let r">{{ r.fechaReserva }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="idCliente">
-        <th mat-header-cell *matHeaderCellDef>Cliente</th>
-        <td mat-cell *matCellDef="let r">{{r.cliente?.nombres}} {{r.cliente?.apellidos}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="horario">
-        <th mat-header-cell *matHeaderCellDef>Horas reservadas</th>
-        <td mat-cell *matCellDef="let r">{{ r.horaInicioReserva }} - {{ r.horaFinReserva }}</td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="['idMesa', 'idRestaurante', 'fechaReserva', 'idCliente', 'horario']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['idMesa', 'idRestaurante', 'fechaReserva', 'idCliente', 'horario']"></tr>
-    </mat-table>
+<div style="max-width: fit-content; width: 100%; margin: auto;">
+    <div style="margin-bottom: 50px;">
+        <p><b>Filtrar</b></p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Por restaurante:</mat-label>
+            <mat-select [(ngModel)]="idRestaurante" (selectionChange)="filtrarReservas()">
+                <mat-option *ngFor="let restaurante of listaRestaurantes" [value]="restaurante.idRestaurante">
+                    {{ restaurante.nombre }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <mat-label>Por fecha:</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedFecha" (dateChange)="filtrarReservas()">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div *ngIf="listaReservas.length > 0">
+        <mat-table [dataSource]="listaReservas">
+            <ng-container matColumnDef="idMesa">
+            <th mat-header-cell *matHeaderCellDef>Mesa</th>
+            <td mat-cell *matCellDef="let r">{{r.mesa?.nombreMesa}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="idRestaurante">
+            <th mat-header-cell *matHeaderCellDef>Restaurante</th>
+            <td mat-cell *matCellDef="let r">{{r.restaurante?.nombre}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="fechaReserva">
+            <th mat-header-cell *matHeaderCellDef>Fecha de reserva</th>
+            <td mat-cell *matCellDef="let r">{{ r.fechaReserva }}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="idCliente">
+            <th mat-header-cell *matHeaderCellDef>Cliente</th>
+            <td mat-cell *matCellDef="let r">{{r.cliente?.nombres}} {{r.cliente?.apellidos}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="horario">
+            <th mat-header-cell *matHeaderCellDef>Horas reservadas</th>
+            <td mat-cell *matCellDef="let r">{{ r.horaInicioReserva }} h - {{ r.horaFinReserva }} h</td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="['idMesa', 'idRestaurante', 'fechaReserva', 'idCliente', 'horario']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['idMesa', 'idRestaurante', 'fechaReserva', 'idCliente', 'horario']"></tr>
+        </mat-table>
+    </div>
 </div>
 
 
