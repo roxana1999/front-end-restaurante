@@ -20,12 +20,14 @@ import { ClienteService } from './services/cliente.service';
 import { MesaService } from './services/mesa.service';
 import { ReservaService } from './services/reserva.service';
 import { ListarReservasComponent } from './components/listar-reservas/listar-reservas.component';
+import { GestionarConsumoComponent } from './components/gestionar-consumo/gestionar-consumo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReservarMesaComponent,
-    ListarReservasComponent
+    ListarReservasComponent,
+    GestionarConsumoComponent
   ],
   imports: [
     FormsModule,
