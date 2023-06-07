@@ -4,7 +4,7 @@ export class GestionConsumo {
         idCliente: number
         estado: string
         total: number
-        fehcaCreacion: string
+        fechaCreacion: string
         horaCreacion: string
         fechaCierre: string
         horaCierre: string
