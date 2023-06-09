@@ -6,6 +6,7 @@ export class GestionConsumo {
 }
 
 export class Cabecera {
+    idCabecera?: number
     idMesa?: number
     idCliente?: number
     estado?: string
@@ -14,6 +15,12 @@ export class Cabecera {
     horaCreacion?: string
     fechaCierre?: string
     horaCierre?: string
+}
+
+export class DatosCabecera{
+    estado?: string
+    mensaje?: string
+    datos?: Cabecera
 }
 
 export class Detalle {
@@ -49,4 +56,10 @@ export class EstadoConsumicion {
     fechaHoraInicioConsumo?: string
     idCabecera?: number
     total?: number
+}
+
+export class DatosBase64{
+    estado?: string
+    mensaje?: string
+    datos?: string
 }
