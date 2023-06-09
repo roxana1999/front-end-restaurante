@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { listaDatos } from '../models/ListaDatos';
 import { Mesa } from '../models/Mesa';
-import { DatosConsumicionMesa, DatosDetalle, Detalle } from '../models/GestionConsumo';
+import { DatosBase64, DatosCabecera, DatosConsumicionMesa, DatosDetalle, Detalle } from '../models/GestionConsumo';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +30,11 @@ export class GestionConsumoService {
     );
   }
 
+  cerrarMesa(idMesa: number): Observable<DatosCabecera> {
+    return this.http.get<DatosCabecera>(this.api+"cerrarMesa/"+idMesa);
+  }
+
+  getStringBase64(idCabecera: number): Observable<DatosBase64> {
+    return this.http.get<DatosBase64>(this.api+"getStringBase64/"+idCabecera);
+  }
 }
