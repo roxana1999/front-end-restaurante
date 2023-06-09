@@ -9,11 +9,15 @@ import { DatosMesa, Mesa } from '../models/Mesa';
   providedIn: 'root'
 })
 export class MesaService {
-  private api: string ="http://localhost:5000/mesas/mesaById";
+  private api: string ="http://localhost:5000/mesas/";
   constructor(private http: HttpClient) { }
 
   getMesaById(queryParams: {}={}): Observable<DatosMesa> {
-    return this.http.get<DatosMesa>(this.api, {params: queryParams});
+    return this.http.get<DatosMesa>(this.api+"mesaById", {params: queryParams});
+  }
+
+  getMesas(queryParams: {}={}): Observable<listaDatos<Mesa>>{
+    return this.http.get<listaDatos<Mesa>>(this.api, {params: queryParams});
   }
   
 }
